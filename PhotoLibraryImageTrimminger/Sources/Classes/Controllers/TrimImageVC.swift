@@ -222,11 +222,10 @@ class TrimImageVC: UIViewController {
         let fileManager = SimpleFileManager()
         //if let data = UIImageJPEGRepresentation(image, 1.0) {
         if let data = UIImagePNGRepresentation(image) {
-            //let fileName = String(fileManager.countImageFiles())+".png"
             let autoIncrementedFileName = fileManager.autoIncrementedFileName()
             print(autoIncrementedFileName)
             fileManager.writeNewImageFile(data: data, fileName: autoIncrementedFileName)
-            fileManager.addNewImageFileName(fileName: autoIncrementedFileName) //autoincremented
+            fileManager.addNewImageFileName(fileName: autoIncrementedFileName)
         }
     }
     
