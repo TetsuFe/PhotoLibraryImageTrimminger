@@ -21,6 +21,7 @@
 		97A4A6461F8B051900A101F1 /* ImageListFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A4A6451F8B051900A101F1 /* ImageListFileManager.swift */; };
 		97A4A6481F8B053400A101F1 /* TextFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A4A6471F8B053400A101F1 /* TextFileManager.swift */; };
 		97A4A64A1F8B055700A101F1 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A4A6491F8B055700A101F1 /* ImageFileManager.swift */; };
+		97A4A64D1F8B7EB600A101F1 /* TouchVisualizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A4A64C1F8B7EB600A101F1 /* TouchVisualizer.framework */; };
 		97CB14271F87017B0063F364 /* FileHandle+Readline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CB14261F87017B0063F364 /* FileHandle+Readline.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		97A4A6451F8B051900A101F1 /* ImageListFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListFileManager.swift; sourceTree = "<group>"; };
 		97A4A6471F8B053400A101F1 /* TextFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileManager.swift; sourceTree = "<group>"; };
 		97A4A6491F8B055700A101F1 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		97A4A64C1F8B7EB600A101F1 /* TouchVisualizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TouchVisualizer.framework; path = Carthage/Build/iOS/TouchVisualizer.framework; sourceTree = "<group>"; };
 		97CB14261F87017B0063F364 /* FileHandle+Readline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileHandle+Readline.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97A4A64D1F8B7EB600A101F1 /* TouchVisualizer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +83,7 @@
 			children = (
 				970A9AF21F8469EB00C6D6D0 /* PhotoLibraryImageTrimminger */,
 				970A9AF11F8469EB00C6D6D0 /* Products */,
+				97A4A64B1F8B7EB600A101F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +154,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		97A4A64B1F8B7EB600A101F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97A4A64C1F8B7EB600A101F1 /* TouchVisualizer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,6 +172,7 @@
 				970A9AEC1F8469EB00C6D6D0 /* Sources */,
 				970A9AED1F8469EB00C6D6D0 /* Frameworks */,
 				970A9AEE1F8469EB00C6D6D0 /* Resources */,
+				97A4A64E1F8B7ECB00A101F1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -216,6 +229,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		97A4A64E1F8B7ECB00A101F1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TouchVisualizer.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		970A9AEC1F8469EB00C6D6D0 /* Sources */ = {
@@ -372,6 +402,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VDG358L4M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/PhotoLibraryImageTrimminger/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yoshio.PhotoLibraryImageTrimminger;
@@ -387,6 +421,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VDG358L4M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/PhotoLibraryImageTrimminger/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.yoshio.PhotoLibraryImageTrimminger;

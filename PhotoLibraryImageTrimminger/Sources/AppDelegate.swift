@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TouchVisualizer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var photoLibraryImage : UIImage!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Visualizer.start()
         // Override point for customization after application launch.
         return true
     }
