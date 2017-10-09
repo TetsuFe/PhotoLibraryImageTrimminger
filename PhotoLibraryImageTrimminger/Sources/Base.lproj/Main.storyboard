@@ -102,37 +102,46 @@
                                         <rect key="frame" x="0.0" y="508" width="320" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEI-lH-ZDJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="トリミング"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-G5-NW3">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYE-LG-xv6">
+                                                <rect key="frame" x="106.5" y="0.0" width="107" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="元に戻す"/>
+                                                <state key="normal" title="中央揃え"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB2-VE-CaV">
+                                                <rect key="frame" x="213.5" y="0.0" width="106.5" height="30"/>
+                                                <state key="normal" title="横にフィット"/>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="AEI-lH-ZDJ" firstAttribute="width" secondItem="Ph6-G5-NW3" secondAttribute="width" id="5wi-B7-D80"/>
-                                            <constraint firstItem="AEI-lH-ZDJ" firstAttribute="height" secondItem="Ph6-G5-NW3" secondAttribute="height" id="Vkn-1G-8dR"/>
+                                            <constraint firstItem="AEI-lH-ZDJ" firstAttribute="width" secondItem="XYE-LG-xv6" secondAttribute="width" id="S10-Rx-iE2"/>
+                                            <constraint firstItem="AEI-lH-ZDJ" firstAttribute="width" secondItem="NB2-VE-CaV" secondAttribute="width" id="yns-eX-B3u"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXR-is-UES">
                                         <rect key="frame" x="0.0" y="538" width="320" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNc-tc-fGC">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="編集の終了"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYE-LG-xv6">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-G5-NW3">
+                                                <rect key="frame" x="106.5" y="0.0" width="107" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="中央揃え"/>
+                                                <state key="normal" title="元に戻す"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdD-fR-PPZ">
+                                                <rect key="frame" x="213.5" y="0.0" width="106.5" height="30"/>
+                                                <state key="normal" title="やり直し"/>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="yNc-tc-fGC" firstAttribute="width" secondItem="XYE-LG-xv6" secondAttribute="width" id="IN0-mB-Y0R"/>
+                                            <constraint firstItem="yNc-tc-fGC" firstAttribute="width" secondItem="RdD-fR-PPZ" secondAttribute="width" id="Ly9-X6-v3a"/>
+                                            <constraint firstItem="yNc-tc-fGC" firstAttribute="width" secondItem="Ph6-G5-NW3" secondAttribute="width" id="ZW7-8B-1ht"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -164,9 +173,11 @@
                         <outlet property="cropImageButton" destination="AEI-lH-ZDJ" id="rfS-zV-lg6"/>
                         <outlet property="editPhotoView" destination="DsH-tt-qSR" id="GLm-Lu-TP5"/>
                         <outlet property="finishEditingButton" destination="yNc-tc-fGC" id="ZgU-7M-wHf"/>
+                        <outlet property="fitWidthButton" destination="NB2-VE-CaV" id="SpH-zz-7py"/>
                         <outlet property="headerView" destination="heX-lq-J1P" id="Epx-VB-mKP"/>
                         <outlet property="mainStackView" destination="1Tc-PV-2gt" id="HOR-fP-8WJ"/>
                         <outlet property="navigationLabel" destination="fjp-4s-NgB" id="w3q-Ya-GBl"/>
+                        <outlet property="redoButton" destination="RdD-fR-PPZ" id="BEa-Wa-LMH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqi-bI-f5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
