@@ -58,7 +58,6 @@
 		970275C61F893297005A2BD3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				970A9AF71F8469EB00C6D6D0 /* Main.storyboard */,
 				970A9AFC1F8469EB00C6D6D0 /* LaunchScreen.storyboard */,
 				970A9AFA1F8469EB00C6D6D0 /* Assets.xcassets */,
 				970A9AFF1F8469EB00C6D6D0 /* Info.plist */,
@@ -70,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				970A9AF31F8469EB00C6D6D0 /* AppDelegate.swift */,
+				970A9AF71F8469EB00C6D6D0 /* Main.storyboard */,
 				979E90BE1F88C51F00FC5C35 /* Classes */,
 			);
 			path = Sources;
