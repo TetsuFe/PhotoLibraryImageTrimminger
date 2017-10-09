@@ -219,13 +219,14 @@ class TrimImageVC: UIViewController {
         print(editPhotoView.frame.width)
         print(imageView.frame.size)
         print(image.size)
-        let fileManager = SimpleFileManager()
+        let imageListFileManager = ImageListFileManager()
+        let imageFileManager = ImageFileManager()
         //if let data = UIImageJPEGRepresentation(image, 1.0) {
         if let data = UIImagePNGRepresentation(image) {
-            let autoIncrementedFileName = fileManager.autoIncrementedFileName()
+            let autoIncrementedFileName = imageListFileManager.autoIncrementedFileName()
             print(autoIncrementedFileName)
-            fileManager.writeNewImageFile(data: data, fileName: autoIncrementedFileName)
-            fileManager.addNewImageFileName(fileName: autoIncrementedFileName)
+            imageFileManager.writeNewImageFile(data: data, fileName: autoIncrementedFileName)
+            imageListFileManager.addNewImageFileName(fileName: autoIncrementedFileName)
         }
     }
     

@@ -18,6 +18,9 @@
 		970A9B0C1F846E6500C6D6D0 /* SimpleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A9B0B1F846E6500C6D6D0 /* SimpleFileManager.swift */; };
 		970A9B0F1F846EF800C6D6D0 /* UIImage+Trimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A9B0E1F846EF800C6D6D0 /* UIImage+Trimming.swift */; };
 		970A9B111F85271000C6D6D0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A9B101F85271000C6D6D0 /* HomeVC.swift */; };
+		97A4A6461F8B051900A101F1 /* ImageListFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A4A6451F8B051900A101F1 /* ImageListFileManager.swift */; };
+		97A4A6481F8B053400A101F1 /* TextFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A4A6471F8B053400A101F1 /* TextFileManager.swift */; };
+		97A4A64A1F8B055700A101F1 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A4A6491F8B055700A101F1 /* ImageFileManager.swift */; };
 		97CB14271F87017B0063F364 /* FileHandle+Readline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CB14261F87017B0063F364 /* FileHandle+Readline.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		970A9B0B1F846E6500C6D6D0 /* SimpleFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFileManager.swift; sourceTree = "<group>"; };
 		970A9B0E1F846EF800C6D6D0 /* UIImage+Trimming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Trimming.swift"; sourceTree = "<group>"; };
 		970A9B101F85271000C6D6D0 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		97A4A6451F8B051900A101F1 /* ImageListFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListFileManager.swift; sourceTree = "<group>"; };
+		97A4A6471F8B053400A101F1 /* TextFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileManager.swift; sourceTree = "<group>"; };
+		97A4A6491F8B055700A101F1 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		97CB14261F87017B0063F364 /* FileHandle+Readline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileHandle+Readline.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				970A9B0B1F846E6500C6D6D0 /* SimpleFileManager.swift */,
+				97A4A6451F8B051900A101F1 /* ImageListFileManager.swift */,
+				97A4A6491F8B055700A101F1 /* ImageFileManager.swift */,
+				97A4A6471F8B053400A101F1 /* TextFileManager.swift */,
 				970275C81F8938C6005A2BD3 /* ImageViewCreator.swift */,
 				970275C41F89309C005A2BD3 /* PhotoLibraryManager.swift */,
 			);
@@ -216,10 +225,13 @@
 				970A9B081F846D4C00C6D6D0 /* TrimImageVC.swift in Sources */,
 				970A9AF41F8469EB00C6D6D0 /* AppDelegate.swift in Sources */,
 				970A9B0F1F846EF800C6D6D0 /* UIImage+Trimming.swift in Sources */,
+				97A4A6481F8B053400A101F1 /* TextFileManager.swift in Sources */,
 				970A9B111F85271000C6D6D0 /* HomeVC.swift in Sources */,
 				970275C91F8938C6005A2BD3 /* ImageViewCreator.swift in Sources */,
 				970A9B0C1F846E6500C6D6D0 /* SimpleFileManager.swift in Sources */,
+				97A4A64A1F8B055700A101F1 /* ImageFileManager.swift in Sources */,
 				970A9B0A1F846DB900C6D6D0 /* StoredImageListVC.swift in Sources */,
+				97A4A6461F8B051900A101F1 /* ImageListFileManager.swift in Sources */,
 				970275C51F89309C005A2BD3 /* PhotoLibraryManager.swift in Sources */,
 				97CB14271F87017B0063F364 /* FileHandle+Readline.swift in Sources */,
 			);

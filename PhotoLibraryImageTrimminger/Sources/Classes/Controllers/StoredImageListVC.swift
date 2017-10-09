@@ -14,7 +14,8 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
     var imageList = [UIImage]()
     var imageFileNameList = [String]()
     var imageView: UIImageView!
-    let fileManager = SimpleFileManager()
+    let imageFileManager = ImageFileManager()
+    let imageListFileManager = ImageListFileManager()
     var photoLibraryManager : PhotoLibraryManager!
     let imageViewCreator = ImageViewCreator()
     
@@ -88,10 +89,10 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
     }
     
     func loadStoredImageList(){
-        imageFileNameList = fileManager.readImageListFileToArray()
+        imageFileNameList = imageListFileManager.readImageListFileToArray()
         print(imageFileNameList)
         for imageFileName in imageFileNameList{
-            if let image = fileManager.readImageFile(fileName: imageFileName) {
+            if let image = imageFileManager.readImageFile(fileName: imageFileName) {
                 imageList.append(image)
             }
         }
@@ -117,7 +118,7 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
         if imageList.count == 0{
             deleteImageButton.isEnabled = false
         }
-        fileManager.removeFromImageListFile(deletingFileName: imageFileNameList[imageIndex])
+        imageListFileManager.removeFromImageListFile(deletingFileName: imageFileNameList[imageIndex])
         //再度データのロード
         loadStoredImageList()
         //一つ画像が減ったので、その前もしくは後の画像を表示（保存された画像が消した画像のみの場合は、何も表示しない）
