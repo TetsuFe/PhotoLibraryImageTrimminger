@@ -41,17 +41,16 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
         photoLibraryManager = PhotoLibraryManager(parentViewController: self)
         loadStoredImageList()
         if imageList.count > 0{
-            deleteImageButton.addTarget(self, action: #selector(createAlertViewForDeleteImage), for:.touchUpInside)
-        }
-        imageIndex = 0
-        
-        if imageList.count > 0 {
             let image = imageList[imageIndex]
             imageView = imageViewCreator.createFittedImageView(image: image,screenSize: self.view.frame.size)
             centerizeImageView(imageView: imageView)
             self.view.addSubview(imageView)
             deleteImageButton.isEnabled = true
+            deleteImageButton.addTarget(self, action: #selector(createAlertViewForDeleteImage), for:.touchUpInside)
+        }else{
+            deleteImageButton.isEnabled = false
         }
+        imageIndex = 0
     }
     
     /*
