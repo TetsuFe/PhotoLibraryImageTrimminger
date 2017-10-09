@@ -18,13 +18,19 @@ class TrimImageVC: UIViewController {
     @IBOutlet weak var finishEditingButton: UIButton!
     @IBOutlet weak var editPhotoView: UIView!
     @IBOutlet weak var centerizeButton: UIButton!
-   
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var fitWidthButton: UIButton!
+    @IBOutlet weak var redoButton: UIButton!
+    
+    
     var image : UIImage!
     var imageView : UIImageView!
     var previousImages = [UIImage]()
-    var previousScaleZoomedInOut = [CGFloat]()
+    var nextImages = [UIImage]()
     var scaleZoomedInOut : CGFloat = 1.0
+    var previousScaleZoomedInOut = [CGFloat]()
+    var nextScaleZoomedInOut = [CGFloat]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,9 @@ class TrimImageVC: UIViewController {
         cancelEditButton.addTarget(self, action: #selector(cancelEdit), for: .touchUpInside)
         centerizeButton.addTarget(self, action: #selector(centerizeImage), for: .touchUpInside)
         finishEditingButton.addTarget(self, action: #selector(finishCropping), for: .touchUpInside)
+        fitWidthButton.addTarget(self, action: #selector(fitWidthOfImageView), for: .touchUpInside)
+        redoButton.addTarget(self, action: #selector(redoEdit), for: .touchUpInside)
+        
         editPhotoView.layer.borderColor = UIColor.black.cgColor
         editPhotoView.layer.borderWidth = 1
         setUpPinchInOutAndDoubleTap()
@@ -68,13 +77,19 @@ class TrimImageVC: UIViewController {
         // 画像の幅・高さの取得
         let imageWidth = image.size.width
         let imageHeight = image.size.height
+        let screenWidth = editPhotoView.frame.width
+        let screenHeight = editPhotoView.frame.height
+        
+        if scaleZoomedInOut == 1.0{
+            if imageWidth > screenWidth{
+                scaleZoomedInOut = screenWidth/imageWidth
+            }
+        }
         
         let rect:CGRect = CGRect(x:0, y:0, width:scaleZoomedInOut*imageWidth, height:scaleZoomedInOut*imageHeight)
         // ImageView frame をCGRectで作った矩形に合わせる
         imageView.frame = rect
 
-        let screenWidth = editPhotoView.frame.width
-        let screenHeight = editPhotoView.frame.height
         // 画像の中心をスクリーンの中心位置に設定
         imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
 
@@ -208,6 +223,8 @@ class TrimImageVC: UIViewController {
         if let croppingRect = makeCroppingRect(){
             previousImages.append(image)
             previousScaleZoomedInOut.append(scaleZoomedInOut)
+            nextImages = Array<UIImage>()
+            nextScaleZoomedInOut = Array<CGFloat>()
             image = image.cropping(to: croppingRect, zoomedInOutScale: scaleZoomedInOut)
             updateImageView()
         }
@@ -240,13 +257,47 @@ class TrimImageVC: UIViewController {
     
     @objc func cancelEdit(){
         if previousScaleZoomedInOut.count > 1{
+            nextScaleZoomedInOut.append(scaleZoomedInOut)
             _ = previousScaleZoomedInOut.popLast()!
             scaleZoomedInOut = previousScaleZoomedInOut.popLast()!
             previousScaleZoomedInOut.append(scaleZoomedInOut)
         }
         if previousImages.count > 0{
+            nextImages.append(image)
             image = previousImages.popLast()
             updateImageView()
+        }
+    }
+    
+    @objc func redoEdit(){
+        if nextScaleZoomedInOut.count > 0{
+            previousScaleZoomedInOut.append(scaleZoomedInOut)
+            scaleZoomedInOut = nextScaleZoomedInOut.popLast()!
+            previousScaleZoomedInOut.append(scaleZoomedInOut)
+        }
+        if nextImages.count > 0{
+            previousImages.append(image)
+            image = nextImages.popLast()!
+            updateImageView()
+        }
+    }
+    
+    @objc func fitWidthOfImageView(){
+        // 画像の幅・高さの取得
+        let imageViewWidth = imageView.frame.width
+        let imageViewHeight = imageView.frame.height
+        let screenWidth = editPhotoView.frame.width
+        let screenHeight = editPhotoView.frame.height
+        
+        if imageViewWidth < screenWidth{
+            let tempScale = screenWidth/imageViewWidth
+            scaleZoomedInOut *= tempScale
+            let rect:CGRect = CGRect(x:0, y:0, width:tempScale*imageViewWidth, height:tempScale*imageViewHeight)
+            // ImageView frame をCGRectで作った矩形に合わせる
+            imageView.frame = rect
+            
+            // 画像の中心をスクリーンの中心位置に設定
+            imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
         }
     }
     
@@ -256,7 +307,6 @@ class TrimImageVC: UIViewController {
         let screenHeight = editPhotoView.frame.height
         imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
     }
-    
     
     var pichCenter : CGPoint!
     var touchPoint1 : CGPoint!
