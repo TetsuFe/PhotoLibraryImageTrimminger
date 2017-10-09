@@ -39,11 +39,11 @@ class TrimImageVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         cropImageButton.addTarget(self, action: #selector(clipImage), for: .touchUpInside)
-        cancelEditButton.addTarget(self, action: #selector(cancelEdit), for: .touchUpInside)
-        centerizeButton.addTarget(self, action: #selector(centerizeImage), for: .touchUpInside)
+        cancelEditButton.addTarget(self, action: #selector(undoEditting), for: .touchUpInside)
+        centerizeButton.addTarget(self, action: #selector(centerizeImageView), for: .touchUpInside)
         finishEditingButton.addTarget(self, action: #selector(finishCropping), for: .touchUpInside)
         fitWidthButton.addTarget(self, action: #selector(fitWidthOfImageView), for: .touchUpInside)
-        redoButton.addTarget(self, action: #selector(redoEdit), for: .touchUpInside)
+        redoButton.addTarget(self, action: #selector(redoEditting), for: .touchUpInside)
         
         editPhotoView.layer.borderColor = UIColor.black.cgColor
         editPhotoView.layer.borderWidth = 1
@@ -255,7 +255,7 @@ class TrimImageVC: UIViewController {
         self.present(secondViewController, animated: true)
     }
     
-    @objc func cancelEdit(){
+    @objc func undoEditting(){
         if previousScaleZoomedInOut.count > 1{
             nextScaleZoomedInOut.append(scaleZoomedInOut)
             _ = previousScaleZoomedInOut.popLast()!
@@ -269,7 +269,7 @@ class TrimImageVC: UIViewController {
         }
     }
     
-    @objc func redoEdit(){
+    @objc func redoEditting(){
         if nextScaleZoomedInOut.count > 0{
             previousScaleZoomedInOut.append(scaleZoomedInOut)
             scaleZoomedInOut = nextScaleZoomedInOut.popLast()!
@@ -301,7 +301,7 @@ class TrimImageVC: UIViewController {
         }
     }
     
-    @objc func centerizeImage(){
+    @objc func centerizeImageView(){
         // 画像サイズをスクリーン幅に合わせる
         let screenWidth = editPhotoView.frame.width
         let screenHeight = editPhotoView.frame.height
