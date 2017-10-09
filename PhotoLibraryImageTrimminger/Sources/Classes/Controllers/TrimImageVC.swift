@@ -11,12 +11,15 @@ import Foundation
 
 class TrimImageVC: UIViewController {
         
+    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var navigationLabel: UILabel!
     @IBOutlet weak var cropImageButton: UIButton!
     @IBOutlet weak var cancelEditButton: UIButton!
     @IBOutlet weak var finishEditingButton: UIButton!
     @IBOutlet weak var editPhotoView: UIView!
     @IBOutlet weak var centerizeButton: UIButton!
+   
+    @IBOutlet weak var headerView: UIView!
     var image : UIImage!
     var imageView : UIImageView!
     var previousImages = [UIImage]()
@@ -42,7 +45,7 @@ class TrimImageVC: UIViewController {
         image = appDelegate.photoLibraryImage
         previousScaleZoomedInOut.append(scaleZoomedInOut)
         createImageView(on: editPhotoView)
-        self.view.bringSubview(toFront: navigationLabel)
+        mainStackView.bringSubview(toFront: headerView)
     }
     
     func setUpPinchInOutAndDoubleTap(){

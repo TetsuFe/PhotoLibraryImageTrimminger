@@ -58,22 +58,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Tc-PV-2gt">
-                                <rect key="frame" x="0.0" y="40" width="320" height="528"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heX-lq-J1P">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用する範囲の決定" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjp-4s-NgB">
+                                                <rect key="frame" x="82" y="28" width="156" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="fjp-4s-NgB" secondAttribute="height" multiplier="26:5" id="sCV-C1-3Rw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kde-QW-iob">
+                                                <rect key="frame" x="20" y="28" width="31" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="戻る"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="fjp-4s-NgB" secondAttribute="bottom" constant="7" id="0YD-oA-cOw"/>
+                                            <constraint firstAttribute="width" secondItem="heX-lq-J1P" secondAttribute="height" multiplier="64:13" id="9fU-43-l19"/>
+                                            <constraint firstItem="fjp-4s-NgB" firstAttribute="leading" secondItem="Kde-QW-iob" secondAttribute="trailing" constant="31" id="JHG-9u-qAT"/>
+                                            <constraint firstItem="Kde-QW-iob" firstAttribute="height" secondItem="fjp-4s-NgB" secondAttribute="height" id="L6M-ja-oZS"/>
+                                            <constraint firstItem="Kde-QW-iob" firstAttribute="centerY" secondItem="fjp-4s-NgB" secondAttribute="centerY" id="aQA-2J-jtc"/>
+                                            <constraint firstItem="fjp-4s-NgB" firstAttribute="top" secondItem="heX-lq-J1P" secondAttribute="top" constant="28" id="feF-iS-n09"/>
+                                            <constraint firstItem="fjp-4s-NgB" firstAttribute="centerX" secondItem="heX-lq-J1P" secondAttribute="centerX" id="yMZ-dF-L3A"/>
+                                            <constraint firstItem="Kde-QW-iob" firstAttribute="leading" secondItem="heX-lq-J1P" secondAttribute="leading" constant="20" id="zSN-Nv-9CY"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsH-tt-qSR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="462"/>
+                                        <rect key="frame" x="0.0" y="65" width="320" height="443"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IFJ-Hb-Lyl">
-                                        <rect key="frame" x="0.0" y="462" width="320" height="33"/>
+                                        <rect key="frame" x="0.0" y="508" width="320" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEI-lH-ZDJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="トリミング"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-G5-NW3">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="33"/>
+                                                <rect key="frame" x="160" y="0.0" width="160" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="元に戻す"/>
                                             </button>
@@ -84,15 +115,15 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXR-is-UES">
-                                        <rect key="frame" x="0.0" y="495" width="320" height="33"/>
+                                        <rect key="frame" x="0.0" y="538" width="320" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNc-tc-fGC">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="編集の終了"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYE-LG-xv6">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="33"/>
+                                                <rect key="frame" x="160" y="0.0" width="160" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="中央揃え"/>
                                             </button>
@@ -103,34 +134,24 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="GXR-is-UES" firstAttribute="height" secondItem="IFJ-Hb-Lyl" secondAttribute="height" id="owU-Jx-zU1"/>
+                                    <constraint firstAttribute="trailing" secondItem="IFJ-Hb-Lyl" secondAttribute="trailing" id="5Qu-sJ-kq2"/>
+                                    <constraint firstAttribute="trailing" secondItem="GXR-is-UES" secondAttribute="trailing" id="B5W-eM-SY8"/>
+                                    <constraint firstItem="GXR-is-UES" firstAttribute="leading" secondItem="1Tc-PV-2gt" secondAttribute="leading" id="E7W-vF-6QT"/>
+                                    <constraint firstItem="DsH-tt-qSR" firstAttribute="leading" secondItem="1Tc-PV-2gt" secondAttribute="leading" id="Iik-uz-Zy8"/>
+                                    <constraint firstAttribute="trailing" secondItem="DsH-tt-qSR" secondAttribute="trailing" id="QT2-Eq-Mbx"/>
+                                    <constraint firstItem="GXR-is-UES" firstAttribute="top" secondItem="IFJ-Hb-Lyl" secondAttribute="bottom" id="bw3-mK-j5D"/>
+                                    <constraint firstItem="IFJ-Hb-Lyl" firstAttribute="leading" secondItem="1Tc-PV-2gt" secondAttribute="leading" id="jJc-dD-gen"/>
+                                    <constraint firstAttribute="bottom" secondItem="GXR-is-UES" secondAttribute="bottom" id="w0n-Am-WCn"/>
+                                    <constraint firstItem="IFJ-Hb-Lyl" firstAttribute="top" secondItem="DsH-tt-qSR" secondAttribute="bottom" id="xNJ-Nf-UOn"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heX-lq-J1P">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用する範囲を決定してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjp-4s-NgB">
-                                <rect key="frame" x="0.0" y="20" width="320" height="20.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fjp-4s-NgB" firstAttribute="top" secondItem="s50-vG-JJD" secondAttribute="top" id="1Ia-fY-Bpi"/>
-                            <constraint firstItem="s50-vG-JJD" firstAttribute="bottom" secondItem="1Tc-PV-2gt" secondAttribute="bottom" id="CgK-LV-Bdt"/>
-                            <constraint firstItem="heX-lq-J1P" firstAttribute="leading" secondItem="G6W-Cu-YXk" secondAttribute="leading" id="K24-jq-lue"/>
-                            <constraint firstItem="fjp-4s-NgB" firstAttribute="leading" secondItem="s50-vG-JJD" secondAttribute="leading" id="N93-dR-90p"/>
-                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="trailing" secondItem="s50-vG-JJD" secondAttribute="trailing" id="OgS-dW-sgw"/>
-                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="leading" secondItem="s50-vG-JJD" secondAttribute="leading" id="P7z-4i-e09"/>
-                            <constraint firstItem="fjp-4s-NgB" firstAttribute="top" secondItem="heX-lq-J1P" secondAttribute="bottom" id="ZnR-Kp-jPf"/>
-                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="top" secondItem="fjp-4s-NgB" secondAttribute="bottom" id="f6x-jX-brC"/>
-                            <constraint firstItem="heX-lq-J1P" firstAttribute="top" secondItem="G6W-Cu-YXk" secondAttribute="top" id="iZ2-zt-TQc"/>
-                            <constraint firstItem="fjp-4s-NgB" firstAttribute="trailing" secondItem="s50-vG-JJD" secondAttribute="trailing" id="q7h-ff-dpm"/>
-                            <constraint firstAttribute="trailing" secondItem="heX-lq-J1P" secondAttribute="trailing" id="yut-L6-WKx"/>
+                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="trailing" secondItem="s50-vG-JJD" secondAttribute="trailing" id="IhG-n6-5fC"/>
+                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="leading" secondItem="s50-vG-JJD" secondAttribute="leading" id="aCJ-DM-k0w"/>
+                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="bottom" secondItem="s50-vG-JJD" secondAttribute="bottom" id="chF-wN-pLe"/>
+                            <constraint firstItem="1Tc-PV-2gt" firstAttribute="top" secondItem="G6W-Cu-YXk" secondAttribute="top" id="eHU-kI-VUM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s50-vG-JJD"/>
                     </view>
@@ -140,6 +161,8 @@
                         <outlet property="cropImageButton" destination="AEI-lH-ZDJ" id="rfS-zV-lg6"/>
                         <outlet property="editPhotoView" destination="DsH-tt-qSR" id="GLm-Lu-TP5"/>
                         <outlet property="finishEditingButton" destination="yNc-tc-fGC" id="ZgU-7M-wHf"/>
+                        <outlet property="headerView" destination="heX-lq-J1P" id="Epx-VB-mKP"/>
+                        <outlet property="mainStackView" destination="1Tc-PV-2gt" id="HOR-fP-8WJ"/>
                         <outlet property="navigationLabel" destination="fjp-4s-NgB" id="w3q-Ya-GBl"/>
                     </connections>
                 </viewController>
