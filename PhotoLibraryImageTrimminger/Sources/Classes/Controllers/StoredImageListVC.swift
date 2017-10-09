@@ -95,6 +95,7 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
     func loadStoredImageList(){
         imageFileNameList = imageListFileManager.readImageListFileToArray()
         print(imageFileNameList)
+        imageList = Array<UIImage>()
         for imageFileName in imageFileNameList{
             if let image = imageFileManager.readImageFile(fileName: imageFileName) {
                 imageList.append(image)
