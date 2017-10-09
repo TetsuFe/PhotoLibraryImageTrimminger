@@ -38,10 +38,10 @@ class TrimImageVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        cropImageButton.addTarget(self, action: #selector(clipImage), for: .touchUpInside)
+        cropImageButton.addTarget(self, action: #selector(trimImage), for: .touchUpInside)
         cancelEditButton.addTarget(self, action: #selector(undoEditting), for: .touchUpInside)
         centerizeButton.addTarget(self, action: #selector(centerizeImageView), for: .touchUpInside)
-        finishEditingButton.addTarget(self, action: #selector(finishCropping), for: .touchUpInside)
+        finishEditingButton.addTarget(self, action: #selector(finishEdittingAlert), for: .touchUpInside)
         fitWidthButton.addTarget(self, action: #selector(fitWidthOfImageView), for: .touchUpInside)
         redoButton.addTarget(self, action: #selector(redoEditting), for: .touchUpInside)
         
@@ -218,8 +218,19 @@ class TrimImageVC: UIViewController {
         return CGRect(x: croppingX, y: croppingY, width: width, height: height)
     }
     
+    @objc func finishEdittingAlert(){
+        let alert = UIAlertController(title: "確認",
+                                      message: "編集を終了して画像を保存しますか？",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "保存", style: .cancel) { (_) -> Void in
+            self.finishEditing()
+        })
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .default))
+        self.present(alert, animated: true)
+    }
+    
     //はみ出したところを切り出す
-    @objc func clipImage(){
+    @objc func trimImage(){
         if let croppingRect = makeCroppingRect(){
             previousImages.append(image)
             previousScaleZoomedInOut.append(scaleZoomedInOut)
@@ -230,7 +241,7 @@ class TrimImageVC: UIViewController {
         }
     }
     
-    @objc func finishCropping(){
+    func finishEditing(){
         saveImage()
         moveToNextPage()
     }
