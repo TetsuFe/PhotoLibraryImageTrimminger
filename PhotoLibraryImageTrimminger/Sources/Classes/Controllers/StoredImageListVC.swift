@@ -24,10 +24,7 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
     }
     
     @IBAction func nextImageButton(_ sender: Any) {
-        if imageIndex < imageList.count-1 {
-            imageIndex += 1
-            updateImageView(newImage: imageList[imageIndex])
-        }
+        showNextImageView()
     }
     
     @IBAction func backImageButton(_ sender: Any) {
@@ -79,10 +76,18 @@ class StoredImageListVC: UIViewController, UINavigationControllerDelegate, UIIma
         }
     }
  */
+    func showNextImageView(){
+        if imageIndex < imageList.count-1 {
+            imageIndex += 1
+            print(imageIndex)
+            updateImageView(newImage: imageList[imageIndex])
+        }
+    }
     
     func showPreviousImageView(){
         if imageIndex > 0 && imageList.count > 0{
             imageIndex -= 1
+            print(imageIndex)
             updateImageView(newImage: imageList[imageIndex])
         }
     }
