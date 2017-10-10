@@ -53,7 +53,7 @@ class TrimImageVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         image = appDelegate.photoLibraryImage
         previousScaleZoomedInOut.append(scaleZoomedInOut)
-        createImageView(on: editPhotoView)
+        createImageView(sourceImage: image, on: editPhotoView)
         mainStackView.bringSubview(toFront: headerView)
     }
     
@@ -72,11 +72,11 @@ class TrimImageVC: UIViewController {
         self.editPhotoView.addGestureRecognizer(doubleTapGesture)
     }
     
-    func createImageView(on parentView: UIView){
-        imageView = UIImageView(image: image)
+    func createImageView(sourceImage: UIImage, on parentView: UIView){
+        imageView = UIImageView(image: sourceImage)
         // 画像の幅・高さの取得
-        let imageWidth = image.size.width
-        let imageHeight = image.size.height
+        let imageWidth = sourceImage.size.width
+        let imageHeight = sourceImage.size.height
         let screenWidth = editPhotoView.frame.width
         let screenHeight = editPhotoView.frame.height
         
@@ -99,7 +99,7 @@ class TrimImageVC: UIViewController {
     
     func updateImageView(){
         imageView.removeFromSuperview()
-        createImageView(on: editPhotoView)
+        createImageView(sourceImage: image, on: editPhotoView)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
