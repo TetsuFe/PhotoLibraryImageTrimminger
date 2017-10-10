@@ -13,7 +13,7 @@ class TrimImageVC: UIViewController {
         
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var navigationLabel: UILabel!
-    @IBOutlet weak var cropImageButton: UIButton!
+    @IBOutlet weak var trimImageButton: UIButton!
     @IBOutlet weak var cancelEditButton: UIButton!
     @IBOutlet weak var finishEditingButton: UIButton!
     @IBOutlet weak var editPhotoView: UIView!
@@ -38,7 +38,7 @@ class TrimImageVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        cropImageButton.addTarget(self, action: #selector(trimImage), for: .touchUpInside)
+        trimImageButton.addTarget(self, action: #selector(trimImage), for: .touchUpInside)
         cancelEditButton.addTarget(self, action: #selector(undoEditting), for: .touchUpInside)
         centerizeButton.addTarget(self, action: #selector(centerizeImageView), for: .touchUpInside)
         finishEditingButton.addTarget(self, action: #selector(finishEdittingAlert), for: .touchUpInside)
@@ -120,102 +120,102 @@ class TrimImageVC: UIViewController {
         imageView.frame.origin.y += deltaY
     }
     
-    func makeCroppingRect() -> CGRect?{
+    func makeTrimmingRect(targetImageView: UIImageView, trimmingAreaView: UIView) -> CGRect?{
         var width = CGFloat()
         var height = CGFloat()
-        var croppingX = CGFloat()
-        var croppingY = CGFloat()
+        var trimmingX = CGFloat()
+        var trimmingY = CGFloat()
         
-        let deltaX = imageView.frame.origin.x
-        let deltaY = imageView.frame.origin.y
+        let deltaX = targetImageView.frame.origin.x
+        let deltaY = targetImageView.frame.origin.y
         
         //空の部分ができてしまった場合、その部分を切り取る
         
-        var xNotCropFlag = false
+        var xNotTrimFlag = false
         //x方向
-        if imageView.frame.width > editPhotoView.frame.width {
+        if targetImageView.frame.width > trimmingAreaView.frame.width {
             
             //3. 最初の時点で画面のy方向に画像がはみ出している時
-            if imageView.frame.origin.x > 0{
+            if targetImageView.frame.origin.x > 0{
                 //origin.y > 0の場合、確実にy方向に画面から外れている
                 //上方向にはみ出し
-                width = editPhotoView.frame.size.width - deltaX
+                width = trimmingAreaView.frame.size.width - deltaX
             }else{
                 //origin.y < 0の場合、上方向には確実にはみ出している
                 //下方向がはみ出していない
-                if editPhotoView.frame.size.width > (imageView.frame.size.width + imageView.frame.origin.x) {
-                    width = imageView.frame.size.width + imageView.frame.origin.x
+                if trimmingAreaView.frame.size.width > (targetImageView.frame.size.width + targetImageView.frame.origin.x) {
+                    width = targetImageView.frame.size.width + targetImageView.frame.origin.x
                 }else{
                     //下方向もはみ出し
-                    width = editPhotoView.frame.size.width
+                    width = trimmingAreaView.frame.size.width
                 }
             }
         }else{
             //4. 最初の時点で画面のy方向に画像がすっぽり全て収まっている時
-            if imageView.frame.origin.x > 0{
-                if editPhotoView.frame.size.width < (imageView.frame.size.width + imageView.frame.origin.x) {
+            if targetImageView.frame.origin.x > 0{
+                if trimmingAreaView.frame.size.width < (targetImageView.frame.size.width + targetImageView.frame.origin.x) {
                     //下方向にはみ出し
-                    width = editPhotoView.frame.size.width - deltaX
+                    width = trimmingAreaView.frame.size.width - deltaX
                 }else{
-                    xNotCropFlag = true
-                    width = imageView.frame.size.width
+                    xNotTrimFlag = true
+                    width = targetImageView.frame.size.width
                 }
             }else{
                 //上方向にはみ出し
-                width = imageView.frame.size.width + imageView.frame.origin.x
+                width = targetImageView.frame.size.width + targetImageView.frame.origin.x
             }
         }
         //y方向
-        if imageView.frame.height > editPhotoView.frame.height {
+        if targetImageView.frame.height > trimmingAreaView.frame.height {
             
             //3. 最初の時点で画面のy方向に画像がはみ出している時
-            if imageView.frame.origin.y > 0{
+            if targetImageView.frame.origin.y > 0{
                 //origin.y > 0の場合、確実にy方向に画面から外れている
                 //下方向にはみ出し
-                height = editPhotoView.frame.size.height - deltaY
+                height = trimmingAreaView.frame.size.height - deltaY
             }else{
                 //origin.y < 0の場合、上方向には確実にはみ出している
                 //下方向がはみ出していない
-                if editPhotoView.frame.size.height > (imageView.frame.size.height + imageView.frame.origin.y) {
-                    height = imageView.frame.size.height + imageView.frame.origin.y
+                if trimmingAreaView.frame.size.height > (targetImageView.frame.size.height + targetImageView.frame.origin.y) {
+                    height = targetImageView.frame.size.height + targetImageView.frame.origin.y
                 }else{
                     //下方向もはみ出し
-                    height = editPhotoView.frame.size.height
+                    height = trimmingAreaView.frame.size.height
                 }
             }
         }else{
             //4. 最初の時点で画面のy方向に画像がすっぽり全て収まっている時
-            if imageView.frame.origin.y > 0{
-                if editPhotoView.frame.size.height < (imageView.frame.size.height + imageView.frame.origin.y) {
+            if targetImageView.frame.origin.y > 0{
+                if trimmingAreaView.frame.size.height < (targetImageView.frame.size.height + targetImageView.frame.origin.y) {
                     //下方向にはみ出し
-                    height = editPhotoView.frame.size.height - deltaY
+                    height = trimmingAreaView.frame.size.height - deltaY
                 }else{
-                    if xNotCropFlag {
+                    if xNotTrimFlag {
                         return nil
                     }else{
-                        height = imageView.frame.size.height
+                        height = targetImageView.frame.size.height
                     }
                 }
             }else{
                 //上方向にはみ出し
-                height = imageView.frame.size.height + imageView.frame.origin.y
+                height = targetImageView.frame.size.height + targetImageView.frame.origin.y
             }
         }
         
-        //croppingRectの座標を決定
-        if imageView.frame.origin.x > editPhotoView.frame.origin.x {
-            croppingX = 0
+        //trimmingRectの座標を決定
+        if targetImageView.frame.origin.x > trimmingAreaView.frame.origin.x {
+            trimmingX = 0
         }else{
-            croppingX = -deltaX
+            trimmingX = -deltaX
         }
         
-        if imageView.frame.origin.y > 0 {
-            croppingY = 0
+        if targetImageView.frame.origin.y > 0 {
+            trimmingY = 0
         }else{
-            croppingY = -deltaY
+            trimmingY = -deltaY
         }
         
-        return CGRect(x: croppingX, y: croppingY, width: width, height: height)
+        return CGRect(x: trimmingX, y: trimmingY, width: width, height: height)
     }
     
     @objc func finishEdittingAlert(){
@@ -231,12 +231,12 @@ class TrimImageVC: UIViewController {
     
     //はみ出したところを切り出す
     @objc func trimImage(){
-        if let croppingRect = makeCroppingRect(){
+        if let trimmingRect = makeTrimmingRect(targetImageView: imageView, trimmingAreaView: editPhotoView){
             previousImages.append(image)
             previousScaleZoomedInOut.append(scaleZoomedInOut)
             nextImages = Array<UIImage>()
             nextScaleZoomedInOut = Array<CGFloat>()
-            image = image.cropping(to: croppingRect, zoomedInOutScale: scaleZoomedInOut)
+            image = image.trimming(to: trimmingRect, zoomedInOutScale: scaleZoomedInOut)
             updateImageView()
         }
     }

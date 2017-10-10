@@ -29,8 +29,8 @@ struct ImageFileManager : SimpleFileManager{
     }
     
     func readImageFile(fileName: String) -> UIImage?{
-        let d = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("/image/\(fileName)")
-        let data = try! Data(contentsOf: d)
+        let dataUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("/image/\(fileName)")
+        let data = try! Data(contentsOf: dataUrl)
         return UIImage(data: data)
     }
     
