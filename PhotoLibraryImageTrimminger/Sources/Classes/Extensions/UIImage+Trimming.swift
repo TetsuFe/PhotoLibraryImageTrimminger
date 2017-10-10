@@ -9,9 +9,9 @@
 import UIKit
 
 //トリミングを行うメソッド
-//トリミング範囲の大きさcroppingRectと元画像の大きさとの拡大倍率をzoomedInOutScaleを用いる
+//トリミング範囲の大きさtrimmingRectと元画像の大きさとの拡大倍率をzoomedInOutScaleを用いる
 extension UIImage {
-    func cropping(to croppingRect : CGRect , zoomedInOutScale: CGFloat) -> UIImage? {
+    func trimming(to trimmingRect : CGRect , zoomedInOutScale: CGFloat) -> UIImage? {
         var opaque = false
         if let cgImage = cgImage {
             switch cgImage.alphaInfo {
@@ -21,10 +21,10 @@ extension UIImage {
                 break
             }
         }
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: croppingRect.size.width/zoomedInOutScale, height: croppingRect.size.height/zoomedInOutScale), opaque, scale)
-        draw(at: CGPoint(x: -croppingRect.origin.x/zoomedInOutScale, y: -croppingRect.origin.y/zoomedInOutScale))
-        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: trimmingRect.size.width/zoomedInOutScale, height: trimmingRect.size.height/zoomedInOutScale), opaque, scale)
+        draw(at: CGPoint(x: -trimmingRect.origin.x/zoomedInOutScale, y: -trimmingRect.origin.y/zoomedInOutScale))
+        let trimmedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return result
+        return trimmedImage
     }
 }

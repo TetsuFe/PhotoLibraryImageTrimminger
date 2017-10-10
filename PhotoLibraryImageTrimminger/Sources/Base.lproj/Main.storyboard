@@ -170,7 +170,6 @@
                     <connections>
                         <outlet property="cancelEditButton" destination="Ph6-G5-NW3" id="kAd-N0-hJ7"/>
                         <outlet property="centerizeButton" destination="XYE-LG-xv6" id="iOm-y5-rHi"/>
-                        <outlet property="cropImageButton" destination="AEI-lH-ZDJ" id="rfS-zV-lg6"/>
                         <outlet property="editPhotoView" destination="DsH-tt-qSR" id="GLm-Lu-TP5"/>
                         <outlet property="finishEditingButton" destination="yNc-tc-fGC" id="ZgU-7M-wHf"/>
                         <outlet property="fitWidthButton" destination="NB2-VE-CaV" id="SpH-zz-7py"/>
@@ -178,6 +177,7 @@
                         <outlet property="mainStackView" destination="1Tc-PV-2gt" id="HOR-fP-8WJ"/>
                         <outlet property="navigationLabel" destination="fjp-4s-NgB" id="w3q-Ya-GBl"/>
                         <outlet property="redoButton" destination="RdD-fR-PPZ" id="BEa-Wa-LMH"/>
+                        <outlet property="trimImageButton" destination="AEI-lH-ZDJ" id="GMu-Xh-HY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqi-bI-f5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
