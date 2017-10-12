@@ -1,9 +1,9 @@
 # PhotoLibraryImageTrimminger
 
 iOSでフォトライブラリから写真を読み込み、トリミングして保存・表示するためのコード。  
-詳しい説明は[Qiita]()にあります
+詳しい説明は[Qiita](https://qiita.com/tetsufe/items/9ff5fe190ee190afa1bb)にあります
 
-**ここにgif画像をあげる**
+**Qiitaにgif画像もあります**
 
 ## 参考資料：ディレクトリ構成
 MVCを多少意識してみましたが、難しい・・・結局ある程度でいいかと挫折しました。  
